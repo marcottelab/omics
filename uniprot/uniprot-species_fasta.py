@@ -12,7 +12,7 @@ if( not os.access('reldate.txt',os.R_OK) ):
     sys.exit(1)
 
 f_rel_date = open('reldate.txt','r')
-rel_date = f_rel_date.readline().strip().split()[3]
+rel_date = f_rel_date.readline().strip().split()[3].replace('_','')
 sys.stderr.write('Release date: %s\n'%rel_date)
 f_rel_date.close()
 
@@ -77,8 +77,8 @@ for tmp_h in trembl_seq.keys():
 count_single = 0
 count_multi = 0
 
-f_out_fa = open('%s_NR.fa'%filename_out_base,'w')
-f_out_log = open('%s_NR.log'%filename_out_base,'w')
+f_out_fa = open('%s.fa'%filename_out_base,'w')
+f_out_log = open('%s.NR_log'%filename_out_base,'w')
 for tmp_seq in seq2h.keys():
     tmp_h_list = sorted(list(set(seq2h[tmp_seq])))
     if( len(tmp_h_list) == 1 ):
